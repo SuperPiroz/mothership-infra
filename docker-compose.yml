@@ -1,0 +1,130 @@
+services:
+  # ----------------------------------------------------------------------------
+  # PostgreSQL - Databas för mothership-core (Python/FastAPI)
+  # ----------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: mothership-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-mothership_core}
+      POSTGRES_USER: ${POSTGRES_USER:-core_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devpassword123}
+    ports:
+      - "${POSTGRES_HOST_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-core_user} -d ${POSTGRES_DB:-mothership_core}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mothership-net
+
+  # ----------------------------------------------------------------------------
+  # MySQL - Databas för mothership-pulse (Go)
+  # ----------------------------------------------------------------------------
+  mysql:
+    image: mysql:8.4
+    container_name: mothership-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-mothership_pulse}
+      MYSQL_USER: ${MYSQL_USER:-pulse_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-devpassword123}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-devrootpassword123}
+    ports:
+      - "${MYSQL_HOST_PORT:-3307}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-devrootpassword123}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mothership-net
+
+  # ----------------------------------------------------------------------------
+  # mothership-core (Python / FastAPI) - Startas när Fas 2 är implementerad
+  # ----------------------------------------------------------------------------
+  core:
+    build:
+      context: ../mothership-core
+      dockerfile: Dockerfile
+    container_name: mothership-core
+    restart: unless-stopped
+    profiles: ["apps", "all"]
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - LOG_LEVEL=${LOG_LEVEL:-DEBUG}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-mothership_core}
+      - POSTGRES_USER=${POSTGRES_USER:-core_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-devpassword123}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-insecure-dev-secret-key-change-in-production-only-12345}
+      - ADMIN_INITIAL_USERNAME=${ADMIN_INITIAL_USERNAME:-admin}
+      - ADMIN_INITIAL_PASSWORD=${ADMIN_INITIAL_PASSWORD:-adminpassword123}
+    ports:
+      - "${CORE_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - mothership-net
+
+  # ----------------------------------------------------------------------------
+  # mothership-pulse (Go) - Startas när Fas 4 är implementerad
+  # ----------------------------------------------------------------------------
+  pulse:
+    build:
+      context: ../mothership-pulse
+      dockerfile: Dockerfile
+    container_name: mothership-pulse
+    restart: unless-stopped
+    profiles: ["apps", "all"]
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-mothership_pulse}
+      - MYSQL_USER=${MYSQL_USER:-pulse_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-devpassword123}
+      - PULSE_PORT=8080
+    ports:
+      - "${PULSE_PORT:-8080}:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - mothership-net
+
+  # ----------------------------------------------------------------------------
+  # mothership-web (React / Vite) - Startas när Fas 5 är implementerad
+  # ----------------------------------------------------------------------------
+  web:
+    build:
+      context: ../mothership-web
+      dockerfile: Dockerfile
+    container_name: mothership-web
+    restart: unless-stopped
+    profiles: ["apps", "all"]
+    ports:
+      - "${WEB_PORT:-3000}:80"
+    depends_on:
+      - core
+      - pulse
+    networks:
+      - mothership-net
+
+networks:
+  mothership-net:
+    name: mothership-local-network
+    driver: bridge
+
+volumes:
+  postgres_data:
+    name: mothership_postgres_data
+  mysql_data:
+    name: mothership_mysql_data

@@ -1,0 +1,18 @@
+# Secrets and local config (CRITICAL)
+*.env
+*.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+*.crt
+*.pfx
+kubeconfig
+*.kubeconfig
+
+# OS & Editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

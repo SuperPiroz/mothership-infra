@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="1600" height="1100" style="background:#0b1120; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="k8sGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="azureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c4a6e" />
+      <stop offset="100%" stop-color="#082f49" />
+    </linearGradient>
+    <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Filters for subtle glow/shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glowAzure" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#0284c7" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glowK8s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#818cf8" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8" />
+    </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+  </defs>
+
+  <!-- ========================================================================= -->
+  <!-- TITLE & HEADER -->
+  <!-- ========================================================================= -->
+  <rect x="40" y="30" width="1520" height="90" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="80" y="72" fill="url(#headerGrad)" font-size="28" font-weight="800" letter-spacing="1px">MOTHERSHIP DASHBOARD</text>
+  <text x="80" y="100" fill="#94a3b8" font-size="15" font-weight="500">Hybrid Cloud Architecture &amp; DevSecOps Delivery Chain (Cloud Native + Secure DevOps)</text>
+  
+  <rect x="1220" y="55" width="150" height="40" rx="8" fill="#0369a1" />
+  <text x="1295" y="80" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Cloud Native (VG)</text>
+  <rect x="1385" y="55" width="150" height="40" rx="8" fill="#4338ca" />
+  <text x="1460" y="80" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">Secure DevOps (VG)</text>
+
+  <!-- ========================================================================= -->
+  <!-- TOP: INTERNET, CLOUDFLARE, USERS -->
+  <!-- ========================================================================= -->
+  <rect x="40" y="140" width="1520" height="85" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+  
+  <!-- Internet / User node -->
+  <rect x="70" y="160" width="220" height="45" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+  <text x="180" y="188" fill="#f8fafc" font-size="14" font-weight="600" text-anchor="middle">🌐 Web Users &amp; Admins</text>
+
+  <!-- Cloudflare Edge -->
+  <rect x="410" y="152" width="480" height="60" rx="10" fill="#0f172a" stroke="#f97316" stroke-width="1.5" />
+  <text x="430" y="177" fill="#fb923c" font-size="14" font-weight="700">Cloudflare Edge &amp; DNS Management (pydev.se)</text>
+  <text x="430" y="198" fill="#94a3b8" font-size="12">DNS-01 TLS Challenge · SSL/TLS Encryption · Origin IP Masking &amp; WAF</text>
+
+  <!-- Domains badges -->
+  <rect x="920" y="160" width="170" height="45" rx="8" fill="#0284c7" fill-opacity="0.2" stroke="#38bdf8" />
+  <text x="1005" y="188" fill="#38bdf8" font-size="13" font-weight="600" text-anchor="middle">dash.pydev.se</text>
+
+  <rect x="1105" y="160" width="170" height="45" rx="8" fill="#6366f1" fill-opacity="0.2" stroke="#818cf8" />
+  <text x="1190" y="188" fill="#818cf8" font-size="13" font-weight="600" text-anchor="middle">api.pydev.se</text>
+
+  <rect x="1290" y="160" width="170" height="45" rx="8" fill="#10b981" fill-opacity="0.2" stroke="#34d399" />
+  <text x="1375" y="188" fill="#34d399" font-size="13" font-weight="600" text-anchor="middle">pulse.pydev.se</text>
+
+  <!-- Arrow User -> Cloudflare -->
+  <path d="M 290 182 L 410 182" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- ========================================================================= -->
+  <!-- LEFT: CLOUD NATIVE / ON-PREMISE (MOTHERSHIP KUBERNETES) -->
+  <!-- ========================================================================= -->
+  <rect x="40" y="250" width="980" height="810" rx="16" fill="url(#k8sGrad)" stroke="#475569" stroke-width="2" filter="url(#shadow)" />
+  
+  <!-- Box Header -->
+  <rect x="40" y="250" width="980" height="48" rx="16" fill="#334155" />
+  <text x="70" y="281" fill="#f8fafc" font-size="16" font-weight="700">MOTHERSHIP SERVER (HP EliteDesk · Ubuntu 26.04 · 22GB RAM · Tailscale VPN · UFW / Fail2ban)</text>
+  <rect x="880" y="260" width="120" height="28" rx="6" fill="#10b981" />
+  <text x="940" y="279" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle">Self-Hosted k3s</text>
+
+  <!-- K8s Inner Cluster Border -->
+  <rect x="65" y="315" width="930" height="580" rx="14" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="6,4" />
+  <text x="85" y="340" fill="#a5b4fc" font-size="14" font-weight="700">Kubernetes Cluster (k3s v1.31) — Namespace: mothership / data / platform</text>
+
+  <!-- Traefik Ingress Controller -->
+  <rect x="85" y="360" width="890" height="65" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="105" y="390" fill="#38bdf8" font-size="15" font-weight="700">Traefik Ingress Controller + cert-manager (Let's Encrypt Wildcard TLS)</text>
+  <text x="105" y="412" fill="#94a3b8" font-size="12">HTTPS Termination (Port 443) · Subdomain Routing · Ingress Security Headers Middleware</text>
+
+  <!-- Security & Governance Banner inside K8s -->
+  <rect x="85" y="440" width="890" height="40" rx="8" fill="#1e1b4b" stroke="#818cf8" stroke-width="1" />
+  <text x="105" y="465" fill="#c7d2fe" font-size="12" font-weight="600">🛡️ Policy as Code (Kyverno) · NetworkPolicies (Default-Deny) · RBAC ServiceAccounts · Non-Root SecurityContext</text>
+
+  <!-- Microservice 1: mothership-core (Python/FastAPI) -->
+  <rect x="85" y="500" width="280" height="230" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+  <rect x="95" y="510" width="260" height="30" rx="6" fill="#0369a1" />
+  <text x="225" y="530" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">mothership-core (Python)</text>
+  <text x="105" y="565" fill="#e2e8f0" font-size="13" font-weight="600">FastAPI 0.115 · Uvicorn</text>
+  <text x="105" y="588" fill="#94a3b8" font-size="12">• Service Catalog (CRUD)</text>
+  <text x="105" y="608" fill="#94a3b8" font-size="12">• Incident &amp; Disruption Log</text>
+  <text x="105" y="628" fill="#94a3b8" font-size="12">• JWT Auth &amp; RBAC (Admin/Viewer)</text>
+  <text x="105" y="648" fill="#94a3b8" font-size="12">• Probes: /healthz &amp; /readyz</text>
+  <text x="105" y="668" fill="#94a3b8" font-size="12">• Security Headers Middleware</text>
+  <rect x="105" y="685" width="240" height="30" rx="6" fill="#0f172a" stroke="#38bdf8" />
+  <text x="225" y="705" fill="#38bdf8" font-size="11" font-weight="600" text-anchor="middle">Docker Hub: superpiroz/mothership-core</text>
+
+  <!-- Microservice 2: mothership-pulse (Go) -->
+  <rect x="390" y="500" width="280" height="230" rx="12" fill="#1e293b" stroke="#34d399" stroke-width="1.5" />
+  <rect x="400" y="510" width="260" height="30" rx="6" fill="#047857" />
+  <text x="530" y="530" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">mothership-pulse (Go)</text>
+  <text x="410" y="565" fill="#e2e8f0" font-size="13" font-weight="600">Go 1.26 Monitoring Engine</text>
+  <text x="410" y="588" fill="#94a3b8" font-size="12">• Periodic HTTP/TCP Health Pings</text>
+  <text x="410" y="608" fill="#94a3b8" font-size="12">• 30-Day Uptime &amp; Latency Stats</text>
+  <text x="410" y="628" fill="#94a3b8" font-size="12">• Host Collector (/proc, /sys)</text>
+  <text x="410" y="648" fill="#94a3b8" font-size="12">• Docker Socket Monitor (RO)</text>
+  <text x="410" y="668" fill="#94a3b8" font-size="12">• Security Auditing (Fail2ban, UFW)</text>
+  <rect x="410" y="685" width="240" height="30" rx="6" fill="#0f172a" stroke="#34d399" />
+  <text x="530" y="705" fill="#34d399" font-size="11" font-weight="600" text-anchor="middle">Docker Hub: superpiroz/mothership-pulse</text>
+
+  <!-- Frontend: mothership-web (React/Vite) -->
+  <rect x="695" y="500" width="280" height="230" rx="12" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5" />
+  <rect x="705" y="510" width="260" height="30" rx="6" fill="#be123c" />
+  <text x="835" y="530" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">mothership-web (Frontend)</text>
+  <text x="715" y="565" fill="#e2e8f0" font-size="13" font-weight="600">React 18 · TypeScript · Vite</text>
+  <text x="715" y="588" fill="#94a3b8" font-size="12">• Realtime Cluster &amp; Host Metrics</text>
+  <text x="715" y="608" fill="#94a3b8" font-size="12">• Interactive Service Catalog</text>
+  <text x="715" y="628" fill="#94a3b8" font-size="12">• Incident Tracker &amp; Search</text>
+  <text x="715" y="648" fill="#94a3b8" font-size="12">• AI Hermes Agent Control Hub</text>
+  <text x="715" y="668" fill="#94a3b8" font-size="12">• Unprivileged Nginx Container</text>
+  <rect x="715" y="685" width="240" height="30" rx="6" fill="#0f172a" stroke="#f43f5e" />
+  <text x="835" y="705" fill="#f43f5e" font-size="11" font-weight="600" text-anchor="middle">Docker Hub: superpiroz/mothership-web</text>
+
+  <!-- Databases Layer -->
+  <!-- PostgreSQL -->
+  <rect x="85" y="750" width="280" height="120" rx="10" fill="#1e293b" stroke="#4f46e5" stroke-width="1.5" />
+  <text x="105" y="775" fill="#818cf8" font-size="14" font-weight="700">PostgreSQL 16 (StatefulSet)</text>
+  <text x="105" y="798" fill="#94a3b8" font-size="12">Dedicated data storage for core</text>
+  <text x="105" y="818" fill="#94a3b8" font-size="12">PersistentVolume (local-path)</text>
+  <text x="105" y="838" fill="#94a3b8" font-size="12">Encrypted Passwords &amp; JWT</text>
+  <path d="M 225 730 L 225 750" stroke="#818cf8" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- MySQL -->
+  <rect x="390" y="750" width="280" height="120" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+  <text x="410" y="775" fill="#fbbf24" font-size="14" font-weight="700">MySQL 8.4 (StatefulSet)</text>
+  <text x="410" y="798" fill="#94a3b8" font-size="12">Time-series metric storage</text>
+  <text x="410" y="818" fill="#94a3b8" font-size="12">PersistentVolume (local-path)</text>
+  <text x="410" y="838" fill="#94a3b8" font-size="12">Automated data retention policy</text>
+  <path d="M 530 730 L 530 750" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- S3 Backup Box -->
+  <rect x="695" y="750" width="280" height="120" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+  <text x="715" y="775" fill="#34d399" font-size="14" font-weight="700">Automated Cloud S3 Backup</text>
+  <text x="715" y="798" fill="#94a3b8" font-size="12">Kubernetes CronJob (Nightly)</text>
+  <text x="715" y="818" fill="#94a3b8" font-size="12">Client-side AES encryption</text>
+  <text x="715" y="838" fill="#34d399" font-size="12" font-weight="600">Backblaze B2 (S3 API Storage)</text>
+
+  <!-- Connectors from DB to S3 -->
+  <path d="M 365 810 L 695 810" stroke="#34d399" stroke-dasharray="4,4" stroke-width="1.5" marker-end="url(#arrowGreen)" />
+
+  <!-- Host Components (Hermes + Sensors) -->
+  <rect x="65" y="915" width="930" height="125" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+  <text x="85" y="940" fill="#e2e8f0" font-size="14" font-weight="700">Host Services &amp; AI Infrastructure (Running directly on Mothership Host)</text>
+  
+  <rect x="85" y="955" width="430" height="70" rx="8" fill="#1e293b" stroke="#475569" />
+  <text x="105" y="980" fill="#38bdf8" font-size="13" font-weight="600">Hermes Agent (Nous Research)</text>
+  <text x="105" y="1000" fill="#94a3b8" font-size="12">Port 9119-9120 (Bound strictly to 127.0.0.1) · MCP Swedish Jobs Integration</text>
+
+  <rect x="535" y="955" width="440" height="70" rx="8" fill="#1e293b" stroke="#475569" />
+  <text x="555" y="980" fill="#a5b4fc" font-size="13" font-weight="600">System Telemetry &amp; Security Daemons</text>
+  <text x="555" y="1000" fill="#94a3b8" font-size="12">Fail2ban SSH Jail · UFW Active Firewall · Unattended Security Upgrades</text>
+
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT: SECURE DEVOPS / MICROSOFT AZURE CLOUD -->
+  <!-- ========================================================================= -->
+  <rect x="1050" y="250" width="510" height="810" rx="16" fill="url(#azureGrad)" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+  
+  <!-- Azure Box Header -->
+  <rect x="1050" y="250" width="510" height="48" rx="16" fill="#0284c7" />
+  <text x="1080" y="281" fill="#ffffff" font-size="16" font-weight="700">MICROSOFT AZURE CLOUD (Secure DevOps Delivery)</text>
+
+  <!-- CI/CD Pipeline Flow in Azure DevOps -->
+  <rect x="1075" y="315" width="460" height="215" rx="12" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.5" />
+  <text x="1095" y="340" fill="#38bdf8" font-size="14" font-weight="700">Azure DevOps Secure Pipeline (YAML)</text>
+  <text x="1095" y="365" fill="#94a3b8" font-size="12">1. Trigger on main / develop branch with branch policy</text>
+  <text x="1095" y="388" fill="#f87171" font-size="12" font-weight="600">2. SCA Audit: pip-audit (Block on High/Critical CVEs)</text>
+  <text x="1095" y="410" fill="#60a5fa" font-size="12">3. Unit Tests: pytest execution &amp; coverage publishing</text>
+  <text x="1095" y="432" fill="#fbbf24" font-size="12" font-weight="600">4. SAST Analysis: SonarCloud / Bandit Quality Gate</text>
+  <text x="1095" y="454" fill="#a78bfa" font-size="12">5. Container Scan: Trivy scanner &amp; Push to ACR</text>
+  <text x="1095" y="476" fill="#34d399" font-size="12" font-weight="600">6. DAST Testing: OWASP ZAP automated scan on staging</text>
+  <text x="1095" y="498" fill="#38bdf8" font-size="12">7. Gated Production Release with Manual Approval</text>
+
+  <!-- Azure Container Registry (ACR) -->
+  <rect x="1075" y="550" width="460" height="75" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <text x="1095" y="578" fill="#38bdf8" font-size="14" font-weight="700">Azure Container Registry (ACR)</text>
+  <text x="1095" y="602" fill="#94a3b8" font-size="12">Private OCI registry · Managed Identity AcrPull · Vulnerability scanning</text>
+
+  <!-- Azure App Service (Test & Prod Slots) -->
+  <rect x="1075" y="645" width="460" height="120" rx="10" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" />
+  <text x="1095" y="675" fill="#38bdf8" font-size="14" font-weight="700">Azure App Service (Linux Web App)</text>
+  <text x="1095" y="700" fill="#94a3b8" font-size="12">• Deployment Slots: Staging (DAST testing) &amp; Production</text>
+  <text x="1095" y="722" fill="#94a3b8" font-size="12">• Managed Identity (System-assigned, zero hardcoded secrets)</text>
+  <text x="1095" y="744" fill="#94a3b8" font-size="12">• Enforced HTTPS &amp; Minimum TLS 1.2 Protocol</text>
+
+  <!-- Azure Key Vault -->
+  <rect x="1075" y="785" width="460" height="110" rx="10" fill="#0f172a" stroke="#eab308" stroke-width="1.5" />
+  <text x="1095" y="815" fill="#facc15" font-size="14" font-weight="700">Azure Key Vault (Secrets Management)</text>
+  <text x="1095" y="840" fill="#94a3b8" font-size="12">• Secret &amp; Key Rotation Demonstration (JWT Signing Key)</text>
+  <text x="1095" y="862" fill="#94a3b8" font-size="12">• Role-Based Access Control (Azure RBAC: Key Vault Secrets User)</text>
+
+  <!-- Monitoring & Incident Management -->
+  <rect x="1075" y="915" width="460" height="125" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="1.5" />
+  <text x="1095" y="945" fill="#c084fc" font-size="14" font-weight="700">Azure Monitor &amp; Application Insights</text>
+  <text x="1095" y="970" fill="#94a3b8" font-size="12">• Realtime OpenTelemetry Traces, Exceptions &amp; Dependencies</text>
+  <text x="1095" y="992" fill="#94a3b8" font-size="12">• Log Analytics with KQL queries for security events (401/403)</text>
+  <text x="1095" y="1014" fill="#c084fc" font-size="12" font-weight="600">• Action Group Alerting: Automated incident notifications</text>
+
+  <!-- Inter-cluster / Pipeline connecting arrows -->
+  <path d="M 365 580 L 1075 580" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrowCyan)" />
+  <text x="720" y="570" fill="#38bdf8" font-size="12" font-weight="600" text-anchor="middle">Shared Codebase &amp; Dockerfile (mothership-core)</text>
+
+</svg>
